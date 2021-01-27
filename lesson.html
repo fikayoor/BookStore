@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <title>Vue.js Book Store</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="products.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <header>
+                <h1> {{ sitename }}</h1>
+                <button @click='showCheckout'> 
+                    {{cartItemCount}}
+                <span class ="fa fa-cart-plus"></span> Checkout </button>
+                
+            </header>
+
+            <main>
+            
+                <div v-if='showProduct'>
+                    <!--Using the for loop we are looping through the return of the sortedProducts computed property-->
+                    <!--This will give us a list sorted by Price-->
+                    <div v-for="product in sortedProducts">
+                        <h2 v-text ="product.title"></h2>
+                            <figure>
+                                <img v-bind:src="product.image" style="width:10%; height:20%;">
+                            </figure>
+                        <p v-html ="product.description"></p>
+                        <p> Price {{ product.price }} </p>
+
+                        <!-- The button will display when 'Add to Cart is True -->                        
+                        <!--When we click the Add To Cart are now passing the product and its ID to the function as parameters-->
+                         <button @click='addToCart(product)' v-if='canAddToCart(product)'> Add to Cart </button>
+
+                            <!-- v-if to check how many products with the particular id are in the shopping 
+                                cart against what are available in the inventory of that particular product-->
+                                <span v-if="product.availableInventory === cartCount(product.id)">
+                                    Sold out!
+                                </span>
+                                <span v-else-if="product.availableInventory - cartCount(product.id) < 5">
+                                    Only {{product.availableInventory - cartCount(product.id)}} left!!
+                                </span>
+                                <span v-else>Buy Now!</span>
+                            <!-- This button will be disabled otherwise -->
+                        <button disabled ='disabled' v-else>Add to Cart</button>
+
+                <!-- Star Rating -->
+                
+            </div>  
+            </div>
+            <div v-else>
+                <h2>Checkout</h2>
+                <p>
+                    <strong>First Name:</strong>
+                    <!-- This input field is bound to 'firstName' in the 'order' object -->
+                    <input v-model.trim="order.firstName"/>
+                </p>
+                <p>
+                    <strong> Last Name:</strong>
+                    <!-- This input field is bound to 'lastName' in the 'order' object -->
+                    <input v-model.trim="order.lastName"/>
+                </p>
+               
+            <!-- This input field is bound to 'Phone' in the 'order' object -->
+            <p><strong>Phone</strong><input v-model.number="order.phone"/></p>
+
+            
+
+                <h2>Order Information</h2>
+                <p>First Name:{{order.firstName}}</p>
+                <p>Last Name: {{order.lastName}}</p>
+                <p>Phone: {{order.phone}}</p>
+
+                <button v-on:click="submitForm">Place Order</button> 
+            </div>
+            </main>
+        </div>
+    </body>
+
+    <script>
+        var webstore = new Vue({
+            el: '#app',
+            data: {
+                showProduct: true,
+                sitename: 'Book Store',
+                cart: [], // array to store items in shopping cart,
+                order: {
+                    firstName: "",
+                    lastName: "",
+                    phone:"",
+                },
+                products: [],
+            },
+            methods:{
+                addToCart: function (product) {
+                    this.cart.push(product.id);
+                },
+
+                addToCheckOutCart(product){
+                    this.addToCheckOutCart.push(product);
+                },
+                showCheckout: function(){
+                    this.showProduct = this.showProduct ? false : true;
+                },
+                submitForm(){
+                    alert('Your Order is Being Processed')
+                },
+                //Remove canAddToCart from Computed to Method since computed does not take parameters, 
+                //We are now working with an array of objects and therefore need to pass the product
+                //and its ID to identify which product we are working with
+                  canAddToCart: function(product){
+                    return product.availableInventory > this.cartCount(product.id);
+                },
+                //We introduce the cartCount Method to count the number of items of a particular type in the cart
+                cartCount(id){
+                    let count = 0;
+                    for (let i = 0; i < this.cart.length; i++){
+                        if(this.cart[i] === id){
+                            count++
+                        }
+                    }
+                    return count;
+                }
+            },
+            computed: {
+                cartItemCount: function(){
+                    return this.cart.length;
+                },
+                // canAddToCart: function(product){
+                //     return product.availableInventory > this.cartItemCount(product.id);
+                // },
+
+                //We are sorting products by title
+                sortedProducts(){
+                    let productsArray = this.products.slice(0);
+                    function compare (a, b){
+                        if(a.title > b.title)
+                        return 1;
+                        if (a.title < b.title)
+                        return -1;
+                        return 0;
+                    }
+                    return productsArray.sort(compare);
+                }
+              
+            },
+            created: function() {
+// Fetch lessons from database
+fetch("http://localhost:7000/collection/lesson").then(function (res) {
+res.json().then(function (results) {
+// save the returned JSON object to 'product'
+// note that we used 'lesson.product' instead of 'this.product'
+webstore.products = results;
+});
+});
+},
+        });
+    </script>
+</html>

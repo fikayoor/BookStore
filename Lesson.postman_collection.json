@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "64b8d251-779c-4e13-9884-af95a56fd7da",
+		"name": "Lesson",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lesson Retrieval",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n    {\r\n        \"id\": 1001,\r\n        \"topic\": \"Additional Mathematics\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 20,\r\n        \"image\": \"images/add-maths.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1002,\r\n        \"topic\": \"Biology\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 20,\r\n        \"image\": \"images/biology.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1003,\r\n        \"topic\": \"Chemistry\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 30,\r\n        \"image\": \"images/chemistry.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1004,\r\n        \"topic\": \"Computer Science\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 25,\r\n        \"image\": \"images/com-science.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1005,\r\n        \"topic\": \"Geography\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 18,\r\n        \"image\": \"images/geography.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1006,\r\n        \"topic\": \"History\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 22,\r\n        \"image\": \"images/history.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1007,\r\n        \"topic\": \"Mathematics\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 32,\r\n        \"image\": \"images/maths.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1008,\r\n        \"topic\": \"Physics\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 16,\r\n        \"image\": \"images/physics.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1009,\r\n        \"topic\": \"Sociology\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 5,\r\n        \"image\": \"images/sociology.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1010,\r\n        \"topic\": \"Technical Drawing\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 13,\r\n        \"image\": \"images/tech.jpg\",\r\n        \"availableInventory\": 5\r\n    }\r\n\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/collection/lesson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"collection",
+						"lesson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Lesson",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n    {\r\n        \"id\": 1001,\r\n        \"topic\": \"Additional Mathematics\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 20,\r\n        \"image\": \"images/add-maths.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1002,\r\n        \"topic\": \"Biology\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 20,\r\n        \"image\": \"images/biology.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1003,\r\n        \"topic\": \"Chemistry\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 30,\r\n        \"image\": \"images/chemistry.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1004,\r\n        \"topic\": \"Computer Science\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 25,\r\n        \"image\": \"images/com-science.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1005,\r\n        \"topic\": \"Geography\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 18,\r\n        \"image\": \"images/geography.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1006,\r\n        \"topic\": \"History\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 22,\r\n        \"image\": \"images/history.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1007,\r\n        \"topic\": \"Mathematics\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 32,\r\n        \"image\": \"images/maths.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1008,\r\n        \"topic\": \"Physics\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 16,\r\n        \"image\": \"images/physics.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1009,\r\n        \"topic\": \"Sociology\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 5,\r\n        \"image\": \"images/sociology.jpg\",\r\n        \"availableInventory\": 5\r\n    },\r\n    {\r\n        \"id\": 1010,\r\n        \"topic\": \"Technical Drawing\",\r\n        \"description\": \"Lagos\",\r\n        \"price\": 13,\r\n        \"image\": \"images/tech.jpg\",\r\n        \"availableInventory\": 5\r\n    }\r\n\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/collection/lesson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"collection",
+						"lesson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Bada\",\r\n\"phoneNumber\": \"8052162222\",\r\n\"lesson_id\": \"1001\",\r\n\"numberOfSpace\": 9\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/collection/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"collection",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Lesson",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"availableInventory\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/collection/lesson/600dc7ccb8abc622108f2729",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"collection",
+						"lesson",
+						"600dc7ccb8abc622108f2729"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
